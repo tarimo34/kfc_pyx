@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+cd `dirname $0`
+
+ORIGIN_DIR=..
+
+python3 -m http.server --directory $ORIGIN_DIR 8000
