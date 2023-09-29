@@ -1,0 +1,25 @@
+[package]
+name = "pyxel-extension"
+version = "1.9.18"
+authors = ["Takashi Kitao <takashi.kitao@gmail.com>"]
+edition = "2021"
+description = "Python extension module for Pyxel, a retro game engine for Python"
+repository = "https://github.com/kitao/pyxel"
+license = "MIT"
+readme = "README.md"
+categories = ["game-engines", "graphics", "multimedia"]
+keywords = ["game", "gamedev", "python"]
+
+[lib]
+name = "pyxel_extension"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.19", features = ["abi3-py37", "extension-module"] }
+pyxel-core = { path = "../pyxel-core", version = "1.9.18" }
+
+[target.'cfg(not(target_os = "emscripten"))'.dependencies]
+sysinfo = "0.29"
+
+[patch.crates-io]
+sdl2 = { git = "https://github.com/Rust-SDL2/rust-sdl2.git", branch = "master" }
